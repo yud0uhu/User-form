@@ -1,5 +1,9 @@
-function doGet() {
-  return HtmlService.createTemplateFromFile("index").evaluate();
+function doGet(e) {
+    Logger.log( Utilities.jsonStringify(e) );
+    if (!e.parameter.page) {
+        return HtmlService.createTemplateFromFile('index').evaluate();
+    }  
+  return HtmlService.createTemplateFromFile(e.parameter['page']).evaluate();
 }
 
 function doPost(postdata){
